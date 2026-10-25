@@ -5,118 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="AI-powered Used Car Price Prediction app using Flask and a trained Random Forest machine learning model."
+      content="Enterprise-grade Used Car Valuation platform powered by Machine Learning."
     />
-    <title>Used Car Price Prediction | AI Valuation App</title>
+    <title>Used Car Valuation | AI Price Estimator</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <!-- Favicon -->
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M19 17h2c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-1l-2-6H6L4 12H3c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4c0 1.66 1.34 3 3 3s3-1.34 3-3zm-11 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM7 7.5l1.5-4h7l1.5 4H7z'/></svg>"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M19 17h2c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-1l-2-6H6L4 12H3c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4c0 1.66 1.34 3 3 3s3-1.34 3-3zm-11 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM7 7.5l1.5-4h7l1.5 4H7z'/></svg>"
     />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
   <body>
-    <!-- Ambient Background Lighting -->
-    <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
-    <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
-    <div class="ambient-glow ambient-glow-3" aria-hidden="true"></div>
-
-    <div class="app-container">
-      <!-- Header Navigation -->
-      <header class="app-header">
-        <div class="brand">
-          <div class="brand-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.6-.4-1-1-1h-1l-2-6H6L4 12H3c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path>
-              <circle cx="8" cy="17" r="2"></circle>
-              <circle cx="16" cy="17" r="2"></circle>
-              <path d="M7 8h10"></path>
-            </svg>
+    <div class="app-layout">
+      <!-- Top Navigation Bar -->
+      <header class="app-navbar">
+        <div class="nav-container">
+          <div class="nav-brand">
+            <div class="brand-logo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.6-.4-1-1-1h-1l-2-6H6L4 12H3c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h2"></path>
+                <circle cx="8" cy="17" r="2"></circle>
+                <circle cx="16" cy="17" r="2"></circle>
+                <path d="M7 8h10"></path>
+              </svg>
+            </div>
+            <div class="brand-details">
+              <span class="brand-name">AutoValuate</span>
+              <span class="brand-sub">ML Price Estimator</span>
+            </div>
           </div>
-          <div>
-            <span class="brand-title">AutoValue AI</span>
-            <span class="brand-badge">ML 2.0</span>
-          </div>
-        </div>
 
-        <div class="system-status" id="system-status" title="Backend connection status">
-          <span class="status-dot"></span>
-          <span class="status-text" id="status-text">Model Active</span>
+          <div class="nav-actions">
+            <div class="status-badge" id="system-status" role="button" tabindex="0" title="Click to view or edit backend connection URL">
+              <span class="status-indicator"></span>
+              <span class="status-label" id="status-text">Model Ready</span>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
         </div>
       </header>
 
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="hero-tag">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-          </svg>
-          Random Forest Predictive Engine
-        </div>
-        <h1 class="hero-title">Used Car Price Prediction</h1>
-        <p class="hero-subtitle">
-          Instant market valuation computed across 8,300+ encoded features using our trained Random Forest model.
-        </p>
-
-        <!-- Quick Presets -->
-        <div class="preset-wrapper">
-          <span class="preset-label">Quick test presets:</span>
-          <div class="preset-buttons">
-            <button type="button" class="preset-btn" id="preset-toyota" data-preset="toyota">
-              <span>🚗</span> 2021 Toyota SUV
-            </button>
-            <button type="button" class="preset-btn" id="preset-ford" data-preset="ford">
-              <span>🛻</span> 2018 Ford Truck
-            </button>
-            <button type="button" class="preset-btn" id="preset-honda" data-preset="honda">
-              <span>🚙</span> 2020 Honda Sedan
-            </button>
-            <button type="button" class="preset-btn" id="preset-bmw" data-preset="bmw">
-              <span>🏎️</span> 2016 BMW Coupe
-            </button>
+      <!-- Main Content Area -->
+      <main class="page-container">
+        <!-- Hero Header -->
+        <section class="page-header">
+          <div class="header-content">
+            <span class="category-pill">Automated Valuation Model</span>
+            <h1 class="page-title">Used Car Price Valuation</h1>
+            <p class="page-description">
+              Data-driven vehicle valuations evaluated across 8,315 encoded attributes using our trained Random Forest Regressor.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <!-- Main Layout Grid -->
-      <main class="main-grid">
-        <!-- Form Column -->
-        <section class="glass-card form-panel">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title">Vehicle Specifications</h2>
-              <p class="card-subtitle">Configure the vehicle attributes below to generate a valuation.</p>
+          <!-- Quick Test Presets -->
+          <div class="presets-bar">
+            <span class="presets-caption">Sample vehicles:</span>
+            <div class="presets-group">
+              <button type="button" class="preset-chip" id="preset-toyota" data-preset="toyota">
+                2021 Toyota SUV
+              </button>
+              <button type="button" class="preset-chip" id="preset-ford" data-preset="ford">
+                2018 Ford Truck
+              </button>
+              <button type="button" class="preset-chip" id="preset-honda" data-preset="honda">
+                2020 Honda Sedan
+              </button>
+              <button type="button" class="preset-chip" id="preset-bmw" data-preset="bmw">
+                2016 BMW Coupe
+              </button>
             </div>
-            <button type="button" id="reset-btn" class="text-btn" title="Reset form to default values">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                <path d="M3 3v5h5"></path>
-              </svg>
-              Reset
-            </button>
           </div>
+        </section>
 
-          <form id="prediction-form" novalidate>
-            <div class="form-sections">
-              <!-- Field Group: Core Identity -->
-              <div class="fields-group">
-                <div class="group-heading">Core Identifiers</div>
-                <div class="fields-grid">
-                  <!-- Year -->
-                  <div class="form-field">
-                    <label for="year">
-                      <span>Year</span>
-                      <span class="field-hint">(2000 - 2024)</span>
-                    </label>
-                    <div class="input-wrapper">
+        <!-- Two Column Grid -->
+        <div class="content-columns">
+          <!-- Form Panel (Left) -->
+          <div class="panel-card form-container">
+            <div class="panel-top">
+              <div>
+                <h2 class="panel-title">Vehicle Details</h2>
+                <p class="panel-desc">Specify vehicle condition, mileage, and drivetrain.</p>
+              </div>
+              <button type="button" id="reset-btn" class="clean-btn-ghost" title="Reset to defaults">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+
+            <form id="prediction-form" class="clean-form" novalidate>
+              <div class="form-sections">
+                <!-- Group 1: Core Specifications -->
+                <div class="form-group-block">
+                  <span class="group-label">Identification & Condition</span>
+                  <div class="inputs-row">
+                    <!-- Year -->
+                    <div class="field-item">
+                      <label for="year">
+                        <span>Model Year</span>
+                        <span class="field-help">(2000–2024)</span>
+                      </label>
                       <input
                         type="number"
                         id="year"
@@ -125,19 +125,16 @@
                         max="2024"
                         value="2018"
                         required
-                        placeholder="e.g. 2018"
+                        class="clean-input"
                       />
-                      <span class="input-icon">📅</span>
                     </div>
-                  </div>
 
-                  <!-- Odometer -->
-                  <div class="form-field">
-                    <label for="odometer">
-                      <span>Odometer</span>
-                      <span class="field-hint">(miles)</span>
-                    </label>
-                    <div class="input-wrapper">
+                    <!-- Odometer -->
+                    <div class="field-item">
+                      <label for="odometer">
+                        <span>Odometer</span>
+                        <span class="field-help">(miles)</span>
+                      </label>
                       <input
                         type="number"
                         id="odometer"
@@ -146,19 +143,16 @@
                         step="500"
                         value="55000"
                         required
-                        placeholder="e.g. 55000"
+                        class="clean-input"
                       />
-                      <span class="input-icon">⏱️</span>
                     </div>
                   </div>
 
-                  <!-- Condition -->
-                  <div class="form-field">
-                    <label for="condition">
-                      <span>Condition</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="condition" name="condition" required>
+                  <div class="inputs-row">
+                    <!-- Condition -->
+                    <div class="field-item">
+                      <label for="condition">Vehicle Condition</label>
+                      <select id="condition" name="condition" class="clean-select" required>
                         <option value="excellent">Excellent</option>
                         <option value="good" selected>Good</option>
                         <option value="fair">Fair</option>
@@ -167,15 +161,11 @@
                         <option value="salvage">Salvage</option>
                       </select>
                     </div>
-                  </div>
 
-                  <!-- Manufacturer -->
-                  <div class="form-field">
-                    <label for="manufacturer">
-                      <span>Manufacturer</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="manufacturer" name="manufacturer" required>
+                    <!-- Manufacturer -->
+                    <div class="field-item">
+                      <label for="manufacturer">Manufacturer</label>
+                      <select id="manufacturer" name="manufacturer" class="clean-select" required>
                         <option value="ford" selected>Ford</option>
                         <option value="chevrolet">Chevrolet</option>
                         <option value="toyota">Toyota</option>
@@ -190,35 +180,27 @@
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Field Group: Powertrain & Body -->
-              <div class="fields-group">
-                <div class="group-heading">Powertrain & Body Style</div>
-                <div class="fields-grid">
-                  <!-- Fuel -->
-                  <div class="form-field">
-                    <label for="fuel">
-                      <span>Fuel Type</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="fuel" name="fuel" required>
-                        <option value="gas" selected>Gas</option>
+                <!-- Group 2: Drivetrain & Body -->
+                <div class="form-group-block">
+                  <span class="group-label">Mechanical & Body Style</span>
+                  <div class="inputs-row">
+                    <!-- Fuel -->
+                    <div class="field-item">
+                      <label for="fuel">Fuel Type</label>
+                      <select id="fuel" name="fuel" class="clean-select" required>
+                        <option value="gas" selected>Gasoline</option>
                         <option value="diesel">Diesel</option>
                         <option value="hybrid">Hybrid</option>
                         <option value="electric">Electric</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
-                  </div>
 
-                  <!-- Transmission -->
-                  <div class="form-field">
-                    <label for="transmission">
-                      <span>Transmission</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="transmission" name="transmission" required>
+                    <!-- Transmission -->
+                    <div class="field-item">
+                      <label for="transmission">Transmission</label>
+                      <select id="transmission" name="transmission" class="clean-select" required>
                         <option value="automatic" selected>Automatic</option>
                         <option value="manual">Manual</option>
                         <option value="other">Other</option>
@@ -226,27 +208,21 @@
                     </div>
                   </div>
 
-                  <!-- Drive -->
-                  <div class="form-field">
-                    <label for="drive">
-                      <span>Drive Train</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="drive" name="drive" required>
+                  <div class="inputs-row">
+                    <!-- Drive -->
+                    <div class="field-item">
+                      <label for="drive">Drivetrain</label>
+                      <select id="drive" name="drive" class="clean-select" required>
                         <option value="4wd">4WD (Four-Wheel Drive)</option>
                         <option value="fwd" selected>FWD (Front-Wheel Drive)</option>
                         <option value="rwd">RWD (Rear-Wheel Drive)</option>
                       </select>
                     </div>
-                  </div>
 
-                  <!-- Type -->
-                  <div class="form-field">
-                    <label for="type">
-                      <span>Vehicle Body Type</span>
-                    </label>
-                    <div class="select-wrapper">
-                      <select id="type" name="type" required>
+                    <!-- Type -->
+                    <div class="field-item">
+                      <label for="type">Body Classification</label>
+                      <select id="type" name="type" class="clean-select" required>
                         <option value="sedan" selected>Sedan</option>
                         <option value="SUV">SUV</option>
                         <option value="pickup">Pickup</option>
@@ -264,115 +240,111 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Submit Button -->
-            <button type="submit" id="predict-button" class="submit-button">
-              <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
-              <span class="btn-icon" id="btn-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-                </svg>
-              </span>
-              <span class="btn-text" id="btn-text">Predict Price</span>
-            </button>
-          </form>
-        </section>
+              <!-- Submit Action Button -->
+              <button type="submit" id="predict-button" class="clean-submit-btn">
+                <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-icon" id="btn-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                </span>
+                <span class="btn-text" id="btn-text">Predict Price</span>
+              </button>
+            </form>
+          </div>
 
-        <!-- Result Column -->
-        <aside class="glass-card result-panel" aria-live="polite">
-          <div class="result-card-inner">
-            <div class="result-header">
-              <span class="result-badge">AI Valuation Estimate</span>
-              <span class="model-tag">Random Forest</span>
+          <!-- Valuation Results Panel (Right) -->
+          <div class="panel-card result-container" aria-live="polite">
+            <div class="panel-top">
+              <div>
+                <span class="meta-tag">Valuation Output</span>
+                <h2 class="panel-title">Market Assessment</h2>
+              </div>
+              <span class="model-badge">Random Forest</span>
             </div>
 
             <!-- Error Banner -->
-            <div id="error-alert" class="error-alert" style="display: none;">
-              <div class="alert-icon">⚠️</div>
-              <div class="alert-content">
-                <strong>Request Failed</strong>
-                <p id="error-message">Unable to connect to the prediction server.</p>
+            <div id="error-alert" class="alert-box error" style="display: none;">
+              <div class="alert-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
               </div>
-              <button type="button" class="alert-dismiss" id="alert-dismiss" aria-label="Dismiss error">×</button>
+              <div class="alert-body">
+                <strong>Calculation Error</strong>
+                <p id="error-message">Unable to contact the valuation server.</p>
+              </div>
+              <button type="button" class="alert-close" id="alert-dismiss" aria-label="Dismiss">&times;</button>
             </div>
 
-            <!-- Main Price Result Display -->
-            <div class="price-display-wrapper">
-              <p class="price-label">Estimated Price</p>
-              
-              <!-- Result State Display -->
-              <div class="price-value-container">
-                <!-- Idle / Initial State -->
-                <div id="price-idle-state" class="price-state-content">
-                  <div class="price-figure" id="predicted-price">$0</div>
-                  <p class="price-hint">Click <strong>Predict Price</strong> to evaluate this car.</p>
-                </div>
+            <!-- Core Price Display -->
+            <div class="price-display-box">
+              <span class="price-caption">Estimated Market Value</span>
 
-                <!-- Loading State -->
-                <div id="price-loading-state" class="price-loading-state" style="display: none;">
-                  <div class="pulse-loader">
-                    <span class="pulse-ring"></span>
-                    <span class="pulse-ring pulse-delay"></span>
-                    <div class="pulse-core">
-                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 6v6l4 2"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <p class="loading-label">Analyzing 8,315 features...</p>
-                </div>
+              <!-- Idle State -->
+              <div id="price-idle-state" class="price-state">
+                <div class="price-headline" id="predicted-price">$0</div>
+                <p class="price-footnote">Ready for evaluation. Click <strong>Predict Price</strong>.</p>
+              </div>
+
+              <!-- Loading State -->
+              <div id="price-loading-state" class="price-state-loading" style="display: none;">
+                <div class="clean-loader"></div>
+                <span class="loading-text">Computing regression model...</span>
               </div>
             </div>
 
-            <!-- Vehicle Summary Chip -->
-            <div id="summary-section" class="summary-section" style="display: none;">
-              <div class="summary-chip" id="summary-chip">
-                <!-- Populated dynamically via JS -->
+            <!-- Vehicle Summary Tag -->
+            <div id="summary-section" class="summary-wrapper" style="display: none;">
+              <div class="summary-pill" id="summary-chip">
+                <!-- Injected via JavaScript -->
               </div>
             </div>
 
-            <!-- Value Insights / Breakdown Cards -->
-            <div class="insights-grid">
-              <div class="insight-item">
-                <span class="insight-label">Estimated Range</span>
-                <span class="insight-value" id="range-estimate">--</span>
+            <!-- Structured Metrics Grid -->
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <span class="metric-title">Fair Market Range</span>
+                <span class="metric-data" id="range-estimate">--</span>
               </div>
-              <div class="insight-item">
-                <span class="insight-label">Condition Index</span>
-                <span class="insight-value" id="condition-index">--</span>
+              <div class="metric-card">
+                <span class="metric-title">Condition Rating</span>
+                <span class="metric-data" id="condition-index">--</span>
               </div>
-              <div class="insight-item">
-                <span class="insight-label">Mileage Tier</span>
-                <span class="insight-value" id="mileage-tier">--</span>
+              <div class="metric-card">
+                <span class="metric-title">Mileage Tier</span>
+                <span class="metric-data" id="mileage-tier">--</span>
               </div>
-              <div class="insight-item">
-                <span class="insight-label">Model Architecture</span>
-                <span class="insight-value">Random Forest</span>
+              <div class="metric-card">
+                <span class="metric-title">Evaluated Features</span>
+                <span class="metric-data">8,315 Columns</span>
               </div>
             </div>
 
-            <!-- Footer Meta -->
-            <div class="result-footer-note">
+            <!-- Compliance Note -->
+            <div class="footnote-info">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="16" x2="12" y2="12"></line>
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
-              <span>Valuation dynamically aligned with 8,315 one-hot encoded dataset features.</span>
+              <span>Valuation derived from one-hot dummy alignment against trained Craigslist used car transactions.</span>
             </div>
           </div>
-        </aside>
+        </div>
       </main>
 
-      <!-- App Footer -->
+      <!-- Clean Minimal Footer -->
       <footer class="app-footer">
-        <p>Built with <strong>Flask</strong>, <strong>Scikit-Learn</strong>, and <strong>Pandas</strong> • Used Car Price Prediction Model</p>
+        <p>Production Web App • Built with Flask, Scikit-Learn &amp; Pandas</p>
       </footer>
     </div>
 
-    <!-- Script -->
+    <!-- Script Controller -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
