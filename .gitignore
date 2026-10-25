@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Flask / IDE
+.env
+.idea/
+.vscode/
+*.log
+
+# NOTE: GitHub has a 100 MB file limit!
+# model/model.pkl is ~378 MB, so it is ignored from git push:
+model/model.pkl
