@@ -1,5 +1,6 @@
 Name: Muhammad Haris Shahzad
 Reg Id: 232067
+Sec A
 
 Note: Sir my web app is fully ready and i have ran it successfully locally but due to an issue with paymenst on my Github 
 account, the workflow is not running and it's saying to resolve issues with payment method moreover Github is also not accepting any card. I am working on to
